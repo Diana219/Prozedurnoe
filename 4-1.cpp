@@ -48,8 +48,8 @@ void SecondArray(int* array, int* second_array, const size_t size);
 
 enum class ArrayType
 {
-	RandomNumber = 1,
-	UserNumber = 2
+	RandomNumber,
+	UserNumber
 };
 
 int main()
@@ -65,9 +65,10 @@ int main()
 	cout << "Please input array length: ";
 	size_t size;
 	cin >> size;
-
-	int* array = new int[size];
-	int* second_array = new int[size];
+        const size_t size_array = size;
+	
+	int* array = new int[size_array];
+	int* second_array = new int[size_array];
 
 	cout << "\nChoose array:\n" << "1) Array with random number\n" << "2) Array with user number\n" << "1 or 2: ";
 	int choice;
@@ -99,8 +100,16 @@ int main()
 	cout << endl;
 	cout << "Новый массив, в котором элементы, не кратные 3, умножаются на третий элемент: " << endl; SecondArray(array, second_array, size);
 
-	delete[] array;
-	delete[] second_array;
+	if (array != nullptr)
+	{
+		delete[] array;
+		array = nullptr;
+	}
+	if (second_array != nullptr)
+	{
+		delete[] second_array;
+		second_array = nullptr;
+	}
 }
 
 void RandomArray(int* array, const size_t size, const int min, const int max)
@@ -142,7 +151,7 @@ int SumNumbers(int* array, const size_t size)
 void NumberElements(int* array, const size_t size)
 {
 	bool k = false;
-	for (size_t i = 1; i < size - 1; i++) {
+	for (size_t i = 0; i < size - 1; i++) {
 		if (array[i] > array[i + 1]) {
 			cout << "Номер элемента: " << i << endl;
 			k = true;
@@ -155,13 +164,11 @@ void NumberElements(int* array, const size_t size)
 
 void SecondArray(int* array, int* second_array, const size_t size)
 {
-	second_array = array;
-	double third_elem = array[2];
 	for (size_t i = 0; i < size; i++)
 	{
 		if (array[i] % 3)
 		{
-			second_array[i] = array[i] * third_elem;
+			second_array[i] = array[i] * array[2];
 		}
 		else {
 			second_array[i] = array[i];
