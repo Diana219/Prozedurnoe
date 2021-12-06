@@ -98,7 +98,8 @@ int main()
 
 	NumberElements(array, size);
 	cout << endl;
-	cout << "Новый массив, в котором элементы, кратные 3, умножаются на третий элемент: " << endl; SecondArray(array, second_array, size);
+	cout << "Новый массив, в котором элементы, кратные 3, умножаются на третий элемент: " << endl; 
+	SecondArray(array, second_array, size);
 
 	if (array != nullptr)
 	{
