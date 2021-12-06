@@ -70,7 +70,13 @@ int main()
 	int* array = new int[size_array];
 	int* second_array = new int[size_array];
 
-	cout << "\nChoose array:\n" << "1) Array with random number\n" << "2) Array with user number\n" << "1 or 2: ";
+	cout << "Which way of array filling are you prefer?\n"
+
+		<< static_cast<int>(ArrayType::RandomNumber) << " - random,\n"
+
+		<< static_cast<int>(ArrayType::UserNumber) << " - keyboard.\n"
+
+		<< "Your choice is ";
 	int choice;
 	cin >> choice;
 
@@ -151,14 +157,14 @@ int SumNumbers(int* array, const size_t size)
 
 void NumberElements(int* array, const size_t size)
 {
-	bool k = false;
+	bool check = false;
 	for (size_t i = 0; i < size - 1; i++) {
 		if (array[i] > array[i + 1]) {
 			cout << "Номер элемента: " << i << endl;
-			k = true;
+			check = true;
 		}
 	}
-	if (k == false) {
+	if (check == false) {
 		cout << "Таких элементов нет ";
 	}
 }
