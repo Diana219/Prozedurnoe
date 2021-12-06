@@ -48,8 +48,8 @@ void SecondArray(int* array, int* second_array, const size_t size);
 
 enum class ArrayType
 {
-	RandomNumber,
-	UserNumber
+	RandomNumber = 1 ,
+	UserNumber = 2
 };
 
 int main()
@@ -98,7 +98,7 @@ int main()
 
 	NumberElements(array, size);
 	cout << endl;
-	cout << "Новый массив, в котором элементы, не кратные 3, умножаются на третий элемент: " << endl; SecondArray(array, second_array, size);
+	cout << "Новый массив, в котором элементы, кратные 3, умножаются на третий элемент: " << endl; SecondArray(array, second_array, size);
 
 	if (array != nullptr)
 	{
@@ -166,7 +166,7 @@ void SecondArray(int* array, int* second_array, const size_t size)
 {
 	for (size_t i = 0; i < size; i++)
 	{
-		if (array[i] % 3)
+		if (array[i] % 3 == 0)
 		{
 			second_array[i] = array[i] * array[2];
 		}
